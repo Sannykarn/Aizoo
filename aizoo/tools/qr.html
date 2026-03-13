@@ -52,15 +52,28 @@ margin-top:20px;
 
 <img id="qr">
 
+<br><br>
+
+<a id="downloadBtn" style="display:none;" download="qr-code.png">
+<button>Download QR</button>
+</a>
+
 <script>
 
 function generateQR(){
 
 let url=document.getElementById("url").value;
 
-document.getElementById("qr").src=
-"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+url;
+let qrURL =
+"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+url;
 
+document.getElementById("qr").src = qrURL;
+
+let downloadBtn = document.getElementById("downloadBtn");
+downloadBtn.href = qrURL;
+downloadBtn.style.display = "inline";
+
+}
 }
 
 </script>
