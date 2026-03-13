@@ -58,21 +58,24 @@ margin-top:20px;
 
 <script>
 
-function generateQR() {
+function downloadQR() {
 
-let url = document.getElementById("url").value;
+let img = document.getElementById("qr");
+let imageURL = img.src;
 
-if(url === ""){
-alert("Please enter a URL");
-return;
-}
+fetch(imageURL)
+.then(response => response.blob())
+.then(blob => {
 
-let qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(url);
+let link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "aizoo-qr.png";
 
-document.getElementById("qr").src = qrURL;
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
 
-let downloadBtn = document.getElementById("downloadBtn");
-downloadBtn.style.display = "inline-block";
+});
 
 }
   function downloadQR(){
