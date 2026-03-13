@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Dynamic QR Generator | Aizoo</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:60px;
+}
+
+input{
+width:300px;
+padding:10px;
+margin:10px;
+}
+
+button{
+padding:10px 20px;
+background:#38bdf8;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+img{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Dynamic QR Code Generator</h1>
+
+<p>Paste a link to generate QR code</p>
+
+<input id="url" placeholder="https://example.com">
+
+<br>
+
+<button onclick="generateQR()">Generate QR</button>
+
+<br>
+
+<img id="qr">
+
+<script>
+
+function generateQR(){
+
+let url=document.getElementById("url").value;
+
+document.getElementById("qr").src=
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+url;
+
+}
+
+</script>
+
+</body>
+
+</html>
