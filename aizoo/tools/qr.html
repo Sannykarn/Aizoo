@@ -54,9 +54,7 @@ margin-top:20px;
 
 <br><br>
 
-<a id="downloadBtn" style="display:none;" download="qr-code.png">
-<button>Download QR</button>
-</a>
+<button id="downloadBtn" style="display:none;" onclick="downloadQR()">Download QR</button>
 
 <script>
 
@@ -76,6 +74,21 @@ document.getElementById("qr").src = qrURL;
 let downloadBtn = document.getElementById("downloadBtn");
 downloadBtn.href = qrURL;
 downloadBtn.style.display = "inline-block";
+
+}
+  function downloadQR(){
+
+let img = document.getElementById("qr");
+
+let imageURL = img.src;
+
+let link = document.createElement("a");
+link.href = imageURL;
+link.download = "aizoo-qr.png";
+
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
 
 }
 
