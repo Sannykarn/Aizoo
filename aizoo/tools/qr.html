@@ -60,20 +60,23 @@ margin-top:20px;
 
 <script>
 
-function generateQR(){
+function generateQR() {
 
-let url=document.getElementById("url").value;
+let url = document.getElementById("url").value;
 
-let qrURL =
-"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+url;
+if(url === ""){
+alert("Please enter a URL");
+return;
+}
+
+let qrURL = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(url);
 
 document.getElementById("qr").src = qrURL;
 
 let downloadBtn = document.getElementById("downloadBtn");
 downloadBtn.href = qrURL;
-downloadBtn.style.display = "inline";
+downloadBtn.style.display = "inline-block";
 
-}
 }
 
 </script>
